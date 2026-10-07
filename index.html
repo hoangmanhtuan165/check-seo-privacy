@@ -24,13 +24,17 @@
   </head>
   <body>
     <h1>Chính sách quyền riêng tư — Check SEO Onpage</h1>
-    <p class="muted">Cập nhật: 16/07/2026</p>
+    <p class="muted">Cập nhật: 08/10/2026 (bản 1.1.0: thêm tính năng AI tùy chọn) · <a href="#en">English below</a></p>
 
     <h2>Tóm tắt</h2>
     <p>
       Extension <strong>Check SEO Onpage</strong> <strong>không thu thập, không lưu trữ trên máy chủ, và
       không gửi đi bất kỳ dữ liệu cá nhân nào</strong> của người dùng. Toàn bộ phân tích diễn ra cục bộ trên
       trình duyệt của bạn.
+    </p>
+    <p>
+      Ngoại lệ duy nhất là tính năng <strong>gợi ý title/description bằng AI</strong>: tắt mặc định, chỉ chạy
+      khi bạn tự nhập API key Anthropic của mình và bấm nút tạo gợi ý (xem mục “Tính năng AI”).
     </p>
 
     <h2>Dữ liệu extension xử lý</h2>
@@ -43,6 +47,10 @@
         <strong>Lịch sử điểm SEO</strong>: Nếu bạn bấm “Lưu điểm”, điểm và vài chỉ số tóm tắt được lưu vào
         <code>chrome.storage.local</code> — chỉ trên thiết bị của bạn. Có thể xóa bất cứ lúc nào.
       </li>
+      <li>
+        <strong>Cài đặt</strong>: ngôn ngữ giao diện, các quy tắc bạn chọn “Bỏ qua” theo từng tên miền, và
+        (nếu bạn nhập) API key Anthropic — lưu trong <code>chrome.storage.local</code> trên thiết bị của bạn.
+      </li>
     </ul>
 
     <h2>Truy cập mạng</h2>
@@ -52,6 +60,21 @@
       trang. Các yêu cầu đi trực tiếp từ trình duyệt tới máy chủ đó — không qua máy chủ trung gian nào.
     </p>
 
+    <h2>Tính năng AI (tùy chọn, tắt mặc định)</h2>
+    <ul>
+      <li>Chỉ hoạt động khi bạn <strong>tự nhập API key Anthropic của bạn</strong> trong ⚙️ Cài đặt và bấm “Tạo gợi ý”.</li>
+      <li>
+        Mỗi lần bấm, extension gửi trực tiếp từ trình duyệt tới <code>api.anthropic.com</code>: URL trang, title,
+        meta description, thẻ H1, từ khóa bạn nhập (nếu có) và khoảng <strong>2.000 ký tự đầu</strong> nội dung
+        trang. Không gửi gì khác, không gửi tự động.
+      </li>
+      <li>
+        Dữ liệu được Anthropic xử lý theo <a href="https://www.anthropic.com/legal/privacy">chính sách của Anthropic</a>
+        gắn với tài khoản API của bạn. Chúng tôi không có máy chủ trung gian và không nhận được dữ liệu này.
+      </li>
+      <li>Xóa key trong Cài đặt để tắt hoàn toàn tính năng.</li>
+    </ul>
+
     <h2>Quyền sử dụng và lý do</h2>
     <table>
       <thead>
@@ -60,12 +83,35 @@
       <tbody>
         <tr><td><code>activeTab</code></td><td>Đọc nội dung trang đang xem khi bạn bấm icon.</td></tr>
         <tr><td><code>scripting</code></td><td>Chèn mã phân tích vào trang theo yêu cầu.</td></tr>
-        <tr><td><code>storage</code></td><td>Lưu lịch sử điểm SEO cục bộ.</td></tr>
+        <tr><td><code>storage</code></td><td>Lưu lịch sử điểm SEO và cài đặt cục bộ.</td></tr>
         <tr><td><code>optional_host_permissions</code></td><td>Xin quyền theo tên miền khi bấm “Kiểm tra mạng”.</td></tr>
       </tbody>
     </table>
 
     <h2>Không có bên thứ ba</h2>
-    <p>Không analytics, không quảng cáo, không theo dõi hành vi, không chia sẻ dữ liệu với bên thứ ba.</p>
+    <p>
+      Không analytics, không quảng cáo, không theo dõi hành vi, không chia sẻ dữ liệu với bên thứ ba — ngoại trừ
+      gửi tới Anthropic như mục “Tính năng AI”, khi và chỉ khi bạn tự bật và bấm.
+    </p>
+
+    <h1 id="en" style="margin-top:48px">Privacy Policy (English)</h1>
+    <p class="muted">Updated: October 8, 2026 (version 1.1.0: optional AI feature)</p>
+    <p>
+      <strong>Check SEO Onpage</strong> does not collect, store on any server, or transmit your personal data.
+      All analysis runs locally in your browser. The page you are viewing is read only when you click the
+      extension icon (or its keyboard shortcut).
+    </p>
+    <ul>
+      <li><strong>Local storage only</strong>: saved score history, interface language, per-site ignored checks and,
+        if you enter one, your Anthropic API key are kept in <code>chrome.storage.local</code> on your device.</li>
+      <li><strong>Network check</strong>: only when you click it, the extension asks for access to the current site's
+        domain and requests its <code>robots.txt</code>, <code>sitemap.xml</code> and page links directly from your browser.</li>
+      <li><strong>Optional AI suggestions (off by default)</strong>: only if you enter your own Anthropic API key and
+        click “Generate”, the extension sends the page URL, title, meta description, H1, your keyword and roughly the
+        first 2,000 characters of page text directly to <code>api.anthropic.com</code>. That data is handled under
+        <a href="https://www.anthropic.com/legal/privacy">Anthropic's privacy policy</a> for your API account. We run no
+        intermediary server and never receive it. Remove the key to disable the feature.</li>
+      <li>No analytics, no ads, no tracking, and no sharing with third parties other than Anthropic as described above.</li>
+    </ul>
   </body>
 </html>
